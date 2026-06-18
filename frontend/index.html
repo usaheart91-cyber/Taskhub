@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskHub - Earn Points with Surveys & Tasks</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1>TaskHub</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#surveys" class="nav-link">Surveys</a></li>
+                <li><a href="#leaderboard" class="nav-link">Leaderboard</a></li>
+                <li id="authMenus">
+                    <a href="#login" class="nav-link btn-login">Login</a>
+                    <a href="#register" class="nav-link btn-register">Register</a>
+                </li>
+                <li id="userMenus" style="display: none;">
+                    <a href="#dashboard" class="nav-link">Dashboard</a>
+                    <button id="logoutBtn" class="nav-link btn-logout">Logout</button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Earn Points by Completing Surveys & Tasks</h2>
+            <p>Complete surveys, earn points, and climb the leaderboard</p>
+            <button class="btn btn-primary" onclick="scrollToSection('surveys')">Get Started</button>
+        </div>
+    </section>
+
+    <!-- Auth Forms -->
+    <section id="login" class="auth-section">
+        <div class="auth-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p>Don't have an account? <a href="#register" onclick="switchForm('register')">Register here</a></p>
+            </form>
+        </div>
+    </section>
+
+    <section id="register" class="auth-section" style="display: none;">
+        <div class="auth-container">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <input type="text" id="registerUsername" placeholder="Username" required>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Register</button>
+                <p>Already have an account? <a href="#login" onclick="switchForm('login')">Login here</a></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Dashboard -->
+    <section id="dashboard" class="dashboard" style="display: none;">
+        <div class="container">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h3>Your Points</h3>
+                    <p id="userPoints" class="big-number">0</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Surveys Completed</h3>
+                    <p id="surveysCompleted" class="big-number">0</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Referral Points</h3>
+                    <p id="referralPoints" class="big-number">0</p>
+                </div>
+                <div class="dashboard-card">
+                    <h3>Referral Code</h3>
+                    <p id="referralCode" class="code">LOADING...</p>
+                    <button class="btn btn-small" onclick="copyReferralCode()">Copy Code</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Surveys Section -->
+    <section id="surveys" class="surveys-section">
+        <div class="container">
+            <h2>Available Surveys & Tasks</h2>
+            <div id="surveysList" class="surveys-grid">
+                <!-- Surveys will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="leaderboard-section">
+        <div class="container">
+            <h2>Top Earners</h2>
+            <div id="leaderboardTable" class="leaderboard-table">
+                <!-- Leaderboard will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Survey Details -->
+    <div id="surveyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSurveyModal()">&times;</span>
+            <h2 id="surveyTitle"></h2>
+            <p id="surveyDescription"></p>
+            <p><strong>Points: </strong><span id="surveyPoints"></span></p>
+            <p><strong>Estimated Time: </strong><span id="surveyTime"></span> minutes</p>
+            <p><strong>Participants: </strong><span id="surveyParticipants"></span></p>
+            <button class="btn btn-primary" id="completeSurveyBtn" onclick="completeSurvey()">Complete Survey</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
