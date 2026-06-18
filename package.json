@@ -1,0 +1,33 @@
+{
+  "name": "taskhub",
+  "version": "1.0.0",
+  "description": "Survey and Task Platform - Earn Points",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "jest"
+  },
+  "keywords": [
+    "survey",
+    "tasks",
+    "earning",
+    "platform"
+  ],
+  "author": "usaheart91-cyber",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.0",
+    "dotenv": "^16.0.3",
+    "cors": "^2.8.5",
+    "axios": "^1.3.0",
+    "express-validator": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "jest": "^29.0.0"
+  }
+}
